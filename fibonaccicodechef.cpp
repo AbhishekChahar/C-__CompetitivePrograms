@@ -16,55 +16,50 @@ int main(){
         for (int i = 2; i < size; i++) {
             fib[i]=fib[i-1]+fib[i-2];
         }
-        
-        // for (auto i : fib) {
-        //     cout<<i<<" ";
-        // }
-        // cout<<endl;
+    //     for (int i=0 ; i<  fib.size(); i++) {
+    //             cout<<fib[i]<<" ";
+    // 	}
+    // 	cout<<endl;
         
         for (int i = 0; i < size; i++) {
             fib[i] = fib[i]%10;
         }
-        
-        // for (auto i : fib) {
-        //     cout<<i<<" ";
-        // }
-        // cout<<endl;
-        
+    	
+// 		for (int i=0 ; i<  fib.size(); i++) {
+//                 cout<<fib[i]<<" ";
+//     	}    
+//     	cout<<endl;
+       
         while(fib.size() != 1){
             int k=0;
-            for (int i = 0; i < fib.size(); i++) {
+            for (int i = 0; i < fib.size()/2; i++) {
                 fib[i]= fib[(i*2) + 1];
             }
             
-//            for (int i=0 ; i<  fib.size(); i++) {
-//                cout<<fib[i]<<" ";
-//            }
-//            cout<<endl;
+//             for (int i=0 ; i<  fib.size(); i++) {
+//                 cout<<fib[i]<<" ";
+//     		}
+// 			cout<<endl;    
             
             int s=fib.size();
-        
-            if(s>(s/2) )
+            if( s>(s/2) )
                 fib.erase(fib.begin()+ s/2 , fib.begin()+s);
             else
                 fib.erase(fib.begin()+ s);
                 
-//            for (int i=0 ; i<  fib.size(); i++) {
-//                cout<<fib[i]<<" ";
-//            }
-//            cout<<endl;
-            // cout<<fib.size();
+    //         for (int i=0 ; i<  fib.size(); i++) {
+    //             cout<<fib[i]<<" ";
+    // 		}
+    // 		cout<<endl;
                 
         }
         res.push_back(fib[0]);
         fib.clear();
-        // cout<<endl;
     }
-    
+    // cout<<endl;
     for (int i=0 ; i<  res.size(); i++) {
                 cout<<res[i]<<"\n";
-            }
+    }
     return 0;
 }
-
 
