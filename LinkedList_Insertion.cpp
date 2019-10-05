@@ -15,6 +15,7 @@ void showll(){
         cout<< h->data <<" ";
         h = h->next;
     }
+    cout<<"\n";
 }
 
 int  countnodes(){
@@ -29,9 +30,10 @@ int  countnodes(){
 
 void insert_back( int d){
     node* header = head;
+    node* temp = new node();
+    temp->data = d;
+    
     if(header==NULL){
-            node* temp = new node();
-            temp->data = d;
             temp->next = NULL;
             head = temp;
     }
@@ -39,8 +41,6 @@ void insert_back( int d){
         while(header -> next != NULL){
             header = header->next;
         }
-        node* temp = new node();
-        temp->data = d;
         temp->next = NULL;
         header -> next = temp;
     }
@@ -48,15 +48,13 @@ void insert_back( int d){
 
 void insert_front( int d){
     node* header = head;
+    node* temp = new node();
+    temp->data = d;
     if(header==NULL){
-            node* temp = new node();
-            temp->data = d;
-            temp->next = NULL;
-            head = temp;
+        temp->next = NULL;
+        head = temp;
     }
     else{
-        node* temp = new node();
-        temp->data = d;
         temp->next = header;
         head = temp;
     }
@@ -82,6 +80,47 @@ void insert_at_pos(int d, int pos){
     }
 }
 
+void delete_node_back(){
+    node* temp = head;
+    if(temp->next == NULL){
+        head =NULL;
+    }
+    else{
+        while(temp->next->next !=NULL){
+            temp = temp->next;
+        }    
+        temp->next = NULL;
+    }
+}
+
+void delete_node_front(){
+    node* temp = head;
+    if(temp = NULL){
+        cout<<"Linkedlist is already empty!!Cannot delete";
+    }
+    else{
+        head = head->next;
+    }
+}
+
+void delete_node_at_pos(int pos){
+    node* temp = head;
+    if(pos > countnodes() || pos < 1){
+        cout<<"Invalid Index";
+    }
+    else if(pos == 1){
+        delete_node_front();
+    }
+    else{
+        int position=1;
+        while(position != pos-1){
+            temp = temp->next;
+            position++;
+        }
+        temp->next = temp->next->next;
+    }
+}
+
 int main()
 {
     
@@ -97,7 +136,19 @@ int main()
     insert_at_pos(11,5);
 
     showll();
-
+    
+    delete_node_back();
+    showll();
+    
+    
+    delete_node_back();
+    showll();
+    
+    delete_node_front();
+    showll();
+    
+    delete_node_at_pos(4);
+    showll();
     return 0;
 }
 
